@@ -29,6 +29,7 @@ interface UserProgress {
 const XP_PER_LEVEL = 10;
 const STORAGE_PROGRESS = "fc-progress";
 const STORAGE_SESSION = "fc-session-id";
+const WEBHOOK_URL = "https://pilotpulse.app.n8n.cloud/webhook/fitness-coach";
 
 const WELCOME =
   "Welcome! I\u2019m your AI fitness coach. I can help with weightlifting programs, yoga guidance, stretching & mobility routines, and nutrition advice.\n\nWhat are you working on today?";
@@ -412,7 +413,7 @@ export default function Home() {
       lastMsgRef.current = text;
 
       try {
-        const res = await fetch(process.env.NEXT_PUBLIC_WEBHOOK_URL!, {
+        const res = await fetch(WEBHOOK_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text, sessionId }),
