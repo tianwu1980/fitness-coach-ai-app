@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0A0A0F;
+  --color-surface: #14141F;
+  --color-surface-alt: #1A1A28;
+  --color-border: #1E1E2E;
+  --color-text: #F0F0F5;
+  --color-text-dim: #8888A0;
+  --color-accent: #3B82F6;
+  --color-accent-dim: #1A2744;
+  --font-sans: var(--font-outfit);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1E1E2E #0A0A0F;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0A0A0F;
+  color: #F0F0F5;
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes level-glow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0));
+  }
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0));
+  }
+}
+
+.animate-message-in {
+  animation: message-in 200ms ease-out forwards;
+}
+
+.animate-level-up {
+  animation: level-glow 600ms ease-out;
 }
